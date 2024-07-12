@@ -257,6 +257,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@iarna/toml@npm:^2.2.5":
+  version: 2.2.5
+  resolution: "@iarna/toml@npm:2.2.5"
+  checksum: 10c0/d095381ad4554aca233b7cf5a91f243ef619e5e15efd3157bc640feac320545450d14b394aebbf6f02a2047437ced778ae598d5879a995441ab7b6c0b2c2f201
+  languageName: node
+  linkType: hard
+
 "@isaacs/cliui@npm:^8.0.2":
   version: 8.0.2
   resolution: "@isaacs/cliui@npm:8.0.2"
@@ -496,6 +503,19 @@ __metadata:
   peerDependencies:
     "@sveltejs/kit": ^2.0.0
   checksum: 10c0/ec0a4f41cd089467f984433d742d0e87fab6864e3061c76261e60441e3eb780c108e5fa145a11f5166ce0a583b5b5ef86c44d18d426e85e028871e89bdd6cc85
+  languageName: node
+  linkType: hard
+
+"@sveltejs/adapter-netlify@npm:^4.3.1":
+  version: 4.3.1
+  resolution: "@sveltejs/adapter-netlify@npm:4.3.1"
+  dependencies:
+    "@iarna/toml": "npm:^2.2.5"
+    esbuild: "npm:^0.21.5"
+    set-cookie-parser: "npm:^2.6.0"
+  peerDependencies:
+    "@sveltejs/kit": ^2.4.0
+  checksum: 10c0/6fcc1cbf2c0956757b03a192952b8cfca0088144ca332fc7f9d70cf1763a2b3650fc9204d516d8ad62df9e7ec7dc54055952e83c87676fc1245f2c3623e00bea
   languageName: node
   linkType: hard
 
@@ -1306,7 +1326,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esbuild@npm:^0.21.3":
+"esbuild@npm:^0.21.3, esbuild@npm:^0.21.5":
   version: 0.21.5
   resolution: "esbuild@npm:0.21.5"
   dependencies:
@@ -3589,6 +3609,7 @@ __metadata:
   resolution: "tycoon-game@workspace:."
   dependencies:
     "@sveltejs/adapter-auto": "npm:^3.0.0"
+    "@sveltejs/adapter-netlify": "npm:^4.3.1"
     "@sveltejs/adapter-static": "npm:^3.0.2"
     "@sveltejs/kit": "npm:^2.0.0"
     "@sveltejs/vite-plugin-svelte": "npm:^3.0.0"
