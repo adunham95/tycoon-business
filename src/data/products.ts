@@ -5,5 +5,12 @@ export const products = [
 		price: 100,
 		category: 'drinks',
 		peakSeasons: ['Fall', 'Summer']
+	},
+	{
+		id: 'whiskey',
+		name: 'Whiskey',
+		price: 100,
+		category: 'drinks',
+		peakSeasons: ['Fall', 'Summer']
 	}
 ];

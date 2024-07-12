@@ -1,6 +1,8 @@
 <script>
 	import '../app.css';
 	import PlaceholderIcon from '../components/placeholderIcon.svelte';
+
+	const links = [{ path: '/', name: 'Home' }];
 </script>
 
 <div class="drawer">
@@ -28,9 +30,9 @@
 			<div class="mx-2 flex-1 px-2 text-xl">Tycoon Game</div>
 			<div class="hidden flex-none lg:block">
 				<ul class="menu menu-horizontal">
-					<!-- Navbar menu content here -->
-					<li><a>Navbar Item 1</a></li>
-					<li><a>Navbar Item 2</a></li>
+					{#each links as link}
+						<li><a href={link.path}>{link.name}</a></li>
+					{/each}
 				</ul>
 			</div>
 		</div>
@@ -40,9 +42,9 @@
 	<div class="drawer-side">
 		<label for="my-drawer-3" aria-label="close sidebar" class="drawer-overlay"></label>
 		<ul class="menu bg-base-200 min-h-full w-80 p-4">
-			<!-- Sidebar content here -->
-			<li><a>Sidebar Item 1</a></li>
-			<li><a>Sidebar Item 2</a></li>
+			{#each links as link}
+				<li><a href={link.path}>{link.name}</a></li>
+			{/each}
 		</ul>
 	</div>
 </div>

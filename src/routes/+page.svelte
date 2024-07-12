@@ -18,5 +18,5 @@
 	</AppWidget>
 	<AppIcon name="Help" class="bg-error" />
 	<AppIcon link="/warehouse" name="Warehouse" class="bg-secondary" />
-	<AppIcon name="New Business" class="bg-accent" />
+	<AppIcon name="Create" class="bg-accent" />
 </main>

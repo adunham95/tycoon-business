@@ -36,5 +36,5 @@
 	<div class={twMerge('bg-primary h-full w-full rounded-lg p-3', $$props.class)}>
 		<slot />
 	</div>
-	<div class="text-muted-foreground min-h-[1.5em] text-xs font-bold">{name}</div>
+	<div class="text-muted-foreground min-h-[2em] text-sm font-bold">{name}</div>
 </div>
