@@ -19,4 +19,5 @@
 	<AppIcon name="Help" class="bg-error" />
 	<AppIcon link="/warehouse" name="Warehouse" class="bg-secondary" />
 	<AppIcon name="Create" class="bg-accent" />
+	<AppIcon name="Supply Depot" class="bg-accent" />
 </main>
