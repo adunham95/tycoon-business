@@ -10,13 +10,13 @@
 		<div class={twMerge('bg-primary aspect-square w-full rounded-lg p-3', $$props.class)}>
 			<PlaceholderIcon className="text-muted-foreground w-full h-full" />
 		</div>
-		<span class="text-muted-foreground text-sm font-bold">{name}</span>
+		<span class="text-muted-foreground text-xs font-bold">{name}</span>
 	</a>
 {:else}
 	<button class="flex flex-col items-center gap-1">
 		<div class={twMerge('bg-primary aspect-square w-full rounded-lg p-3', $$props.class)}>
 			<PlaceholderIcon className="text-muted-foreground w-full h-full" />
 		</div>
-		<span class="text-muted-foreground text-sm font-bold">{name}</span>
+		<span class="text-muted-foreground text-xs font-bold">{name}</span>
 	</button>
 {/if}
