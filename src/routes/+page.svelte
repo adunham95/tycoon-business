@@ -18,6 +18,6 @@
 	</AppWidget>
 	<AppIcon name="Help" class="bg-error" />
 	<AppIcon link="/warehouse" name="Warehouse" class="bg-secondary" />
-	<AppIcon name="Create" class="bg-accent" />
-	<AppIcon name="Supply Depot" class="bg-accent" />
+	<AppIcon link="/new-business" name="Create" class="bg-accent" />
+	<AppIcon link="/supply-depot" name="Supply Depot" class="bg-accent" />
 </main>
