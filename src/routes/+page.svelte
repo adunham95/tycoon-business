@@ -7,7 +7,7 @@
 	class="grid flex-1 gap-4 overflow-auto px-4 py-6"
 	style=" grid-template-columns: repeat(auto-fit, minmax(min(75px, 200px), 1fr)); grid-auto-rows: 1fr;"
 >
-	<AppWidget width={3} height={2} />
+	<AppWidget width={3} height={2} name="Details" />
 	<AppWidget
 		width={1}
 		height={1}
