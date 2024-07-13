@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 135.46666 135.46667"
+   version="1.1"
+   id="svg1"
+   inkscape:export-filename="logo.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.3.2 (1:1.3.2+202311252150+091e20ef0f)"
+   sodipodi:docname="logo.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.68150253"
+     inkscape:cx="247.98147"
+     inkscape:cy="443.87216"
+     inkscape:window-width="1920"
+     inkscape:window-height="965"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="display:none;fill:#323232;fill-opacity:1;stroke-width:264.583"
+       id="rect1"
+       width="138.75925"
+       height="137.9949"
+       x="-1.1161764"
+       y="0.141038"
+       inkscape:export-filename="light_bulb.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <g
+       transform="matrix(1.6607684,0,0,1.6607684,-13.540899,-15.062146)"
+       class="css-1e98oqk"
+       fill="#ffffff"
+       id="g3"
+       style="fill:#ffffff;fill-opacity:1;stroke-width:0.215317"
+       inkscape:export-filename="light_bulb-light.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <g
+         id="g2"
+         style="fill:#ffffff;fill-opacity:1;stroke-width:0.215317">
+        <path
+           d="m 45.2,76.2 c -0.5,0 -1,0 -1.4,0 -1,0.1 -1.8,-0.2 -2.3,-1.1 -0.5,-0.9 -0.3,-1.8 0.3,-2.6 -0.7,-1 -0.9,-2 -0.1,-3 0.1,-0.1 0.1,-0.3 0,-0.4 -0.6,-0.8 -0.6,-1.6 -0.2,-2.5 -0.2,-0.2 -0.3,-0.3 -0.5,-0.4 -0.7,-0.7 -1.2,-1.6 -1.2,-2.7 0.1,-2.3 0,-4.6 -1.1,-6.6 -0.6,-1.1 -1.2,-2.1 -1.9,-3.2 -2,-3.1 -3.7,-6.2 -5.1,-9.6 -4.2,-10 2.6,-21.5 13,-23.8 10.4,-2.4 20.4,4.2 22.5,14.8 0.6,3.4 0,6.5 -1.2,9.6 -1.2,3 -2.8,5.8 -4.5,8.5 -0.8,1.2 -1.5,2.4 -2.2,3.6 -1,2 -1.3,4.2 -1.1,6.4 0.1,1.4 -0.5,2.5 -1.6,3.4 0.3,0.9 0.4,1.9 -0.4,2.7 0.8,1.1 0.8,2.1 0.1,3.1 0.2,0.4 0.4,0.8 0.5,1.2 0.3,1.5 -0.7,2.6 -2.2,2.7 -0.6,0 -1.1,0 -1.7,0 0,0.5 0.1,0.9 0.1,1.4 0,1.2 -1,2.1 -2.2,2.2 -1,0 -2.1,0 -3.1,0 -1.6,0 -2.5,-0.9 -2.5,-2.6 -0.1,-0.4 0,-0.7 0,-1.1 z M 49,65.4 c 2,0 4,0 6.1,0 0.7,0 1.2,-0.3 1.5,-0.9 0.2,-0.4 0.3,-0.8 0.3,-1.2 -0.1,-2.5 0.1,-5 1.3,-7.2 0.6,-1.2 1.4,-2.4 2.2,-3.6 1.7,-2.7 3.3,-5.4 4.5,-8.4 1.2,-3 1.9,-6.1 1.1,-9.3 -1.7,-7 -6,-11.6 -13,-13.3 -7,-1.6 -12.9,0.6 -17.4,6.2 -2.7,3.3 -3.9,7.3 -3.5,11.6 0.2,2.4 1.3,4.7 2.2,6.9 1.4,3.2 3.5,6 5.3,9 0.8,1.4 1.4,2.9 1.6,4.5 0.2,1.3 0.1,2.6 0.1,3.9 0,1.1 0.7,1.8 1.8,1.8 1.9,0 3.9,0 5.9,0 z m 0,7.7 c -1.8,0 -3.6,0 -5.5,0 -0.7,0 -1,0.4 -1,0.9 0,0.6 0.4,0.9 1,0.9 3.7,0 7.3,0 11,0 0.5,0 0.9,-0.2 1,-0.8 0.1,-0.6 -0.3,-1.1 -1.1,-1.1 -1.8,0.1 -3.6,0.1 -5.4,0.1 z m 0,-6.3 c -1.7,0 -3.5,0 -5.2,0 -0.8,0 -1.2,0.3 -1.2,0.9 0,0.6 0.4,0.9 1.2,0.9 3.5,0 7.1,0 10.6,0 0.8,0 1.2,-0.3 1.2,-0.9 0,-0.6 -0.4,-0.9 -1.1,-0.9 -1.9,0 -3.7,0 -5.5,0 z m 0.1,4.9 c 1.8,0 3.6,0 5.4,0 0.7,0 1.1,-0.3 1.1,-0.9 0,-0.5 -0.4,-0.9 -1,-0.9 -3.6,0 -7.3,0 -10.9,0 -0.3,0 -0.8,0.3 -0.9,0.5 -0.4,0.6 0.1,1.3 1,1.3 1.6,0.1 3.5,0 5.3,0 z M 49,78.4 c 0.5,0 1.1,0 1.6,0 0.7,0 1,-0.3 1,-1 0,-0.7 -0.3,-1.1 -0.9,-1.1 -1.1,0 -2.2,0 -3.3,0 -0.7,0 -1,0.4 -1,1.1 0,0.7 0.3,1 1,1.1 0.6,-0.1 1.1,-0.1 1.6,-0.1 z"
+           id="path1"
+           style="fill:#ffffff;fill-opacity:1;stroke-width:0.215317" />
+        <path
+           fill="{{COLOR}}"
+           d="m 57.7,37.6 -8,9.1 -10.8,-7 -5.1,5.1 c -0.3,0.3 -0.3,0.8 0,1.1 0.2,0.2 0.4,0.2 0.5,0.2 0.2,0 0.4,-0.1 0.5,-0.2 l 4.2,-4.2 10.9,7 9,-10.3 2.1,1.3 0.4,-6 L 56,36 Z"
+           id="path2"
+           style="fill:#ffffff;fill-opacity:1;stroke-width:0.215317" />
+      </g>
+    </g>
+  </g>
+</svg>
