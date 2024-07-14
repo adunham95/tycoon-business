@@ -1,7 +1,9 @@
 export const supplies = [
 	{
-		name: 'bar',
+		id: 'bar',
+		name: 'Bar',
 		storesType: 'liquid',
-		storesUnits: 100
+		storesUnits: 100,
+		price: 10000
 	}
 ];

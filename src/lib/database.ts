@@ -32,3 +32,8 @@ export async function getBusiness() {
 	const db1 = await openDB(gamePlayDB.name, 1);
 	return db1.getAll(gamePlayDB.tables.business.name);
 }
+
+export async function getSingleBusiness(id: number) {
+	const db1 = await openDB(gamePlayDB.name, 1);
+	return db1.get(gamePlayDB.tables.business.name, id);
+}

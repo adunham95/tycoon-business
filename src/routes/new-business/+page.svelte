@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { createBusiness, initializeDatabase } from '$lib/database';
-	import ColorInput from '../../components/inputs/ColorInput.svelte';
-	import TextInput from '../../components/inputs/TextInput.svelte';
+	import ColorInput from '$components/inputs/ColorInput.svelte';
+	import TextInput from '$components/inputs/TextInput.svelte';
+	import PageHeader from '$components/PageHeader.svelte';
 
 	async function saveBusiness(e: any) {
 		initializeDatabase();
@@ -21,7 +22,7 @@
 	}
 </script>
 
-<h1 class="py-12 text-center text-3xl">Create Business</h1>
+<PageHeader title="New Business" />
 
 <form class="px-4" on:submit|preventDefault={saveBusiness}>
 	<TextInput primaryLabel="Name" placeholder="My Business Name" name="businessName" required />

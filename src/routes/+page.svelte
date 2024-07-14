@@ -1,16 +1,14 @@
 <script lang="ts">
-	import { getBusiness, initializeDatabase } from '$lib/database';
-	import AppIcon from '../components/AppIcon.svelte';
-	import AppWidget from '../components/AppWidget.svelte';
+	import { initializeDatabase } from '$lib/database';
+	import AppIcon from '$components/AppIcon.svelte';
+	import AppWidget from '$components/AppWidget.svelte';
+
+	export let data: any;
 
 	initializeDatabase();
-	let businesses: Business[] = [];
+	let businesses: Business[] = [...data.business];
 
-	async function getBusinesses() {
-		businesses = await getBusiness();
-	}
-	getBusinesses();
-	$: console.log(businesses);
+	$: console.log(data);
 </script>
 
 <main
@@ -18,9 +16,9 @@
 	style=" grid-template-columns: repeat(auto-fit, minmax(min(75px, 200px), 1fr)); grid-auto-rows: 1fr;"
 >
 	<AppWidget width={4} height={1} name="Bank">
-		<div>
+		<div class="flex h-full items-center justify-between">
 			<h1 class=" text-2xl text-white">$1</h1>
-			<button>Visit Bank</button>
+			<button class="btn btn-ghost text-white">Visit Bank</button>
 		</div>
 	</AppWidget>
 	<AppWidget width={3} height={2} name="Details" />
@@ -36,7 +34,8 @@
 	<AppIcon link="/warehouse" name="Warehouse" />
 	<AppIcon link="/new-business" name="Create" />
 	<AppIcon link="/supply-depot" name="Supply Depot" />
+	<AppIcon link="/real-estate" name="Real Estate" />
 	{#each businesses as business}
-		<AppIcon link="/supply-depot" name={business.businessName} />
+		<AppIcon link={`/business/${business.id}`} name={business.businessName} />
 	{/each}
 </main>
