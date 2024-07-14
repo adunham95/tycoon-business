@@ -29,6 +29,15 @@
 	<div class="h-2"></div>
 	<ColorInput />
 	<div class="h-2"></div>
+	<select name="category" class="select w-full max-w-xs">
+		<option disabled selected>Category</option>
+		<option>Bar</option>
+		<option>Electronics</option>
+		<option>Coffee Shop</option>
+		<option>Food</option>
+		<option>Clothing</option>
+	</select>
+	<div class="h-2"></div>
 	<div class="flex justify-end">
 		<button class="btn btn-primary">Create</button>
 	</div>

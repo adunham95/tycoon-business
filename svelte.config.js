@@ -18,6 +18,7 @@ const config = {
 		}),
 		alias: {
 			$components: 'src/components',
+			$data: 'src/data',
 			$helpers: 'src/helpers',
 			$store: 'src/stores'
 		}

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import ProductItem from '$components/inputs/ProductItem.svelte';
 	import PageHeader from '$components/PageHeader.svelte';
-	import { supplies } from '../../data/supplies';
+	import { supplies } from '$data/supplies';
 
 	let quantities: { [key: string]: number };
 	$: quantities = {};
