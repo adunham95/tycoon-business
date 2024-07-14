@@ -1,12 +1,28 @@
-<script>
+<script lang="ts">
+	import { getBusiness, initializeDatabase } from '$lib/database';
 	import AppIcon from '../components/AppIcon.svelte';
 	import AppWidget from '../components/AppWidget.svelte';
+
+	initializeDatabase();
+	let businesses: Business[] = [];
+
+	async function getBusinesses() {
+		businesses = await getBusiness();
+	}
+	getBusinesses();
+	$: console.log(businesses);
 </script>
 
 <main
 	class="grid flex-1 gap-4 overflow-auto px-4 py-6"
 	style=" grid-template-columns: repeat(auto-fit, minmax(min(75px, 200px), 1fr)); grid-auto-rows: 1fr;"
 >
+	<AppWidget width={4} height={1} name="Bank">
+		<div>
+			<h1 class=" text-2xl text-white">$1</h1>
+			<button>Visit Bank</button>
+		</div>
+	</AppWidget>
 	<AppWidget width={3} height={2} name="Details" />
 	<AppWidget
 		width={1}
@@ -20,4 +36,7 @@
 	<AppIcon link="/warehouse" name="Warehouse" />
 	<AppIcon link="/new-business" name="Create" />
 	<AppIcon link="/supply-depot" name="Supply Depot" />
+	{#each businesses as business}
+		<AppIcon link="/supply-depot" name={business.businessName} />
+	{/each}
 </main>

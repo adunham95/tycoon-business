@@ -23,7 +23,12 @@ export function initializeDatabase() {
 	});
 }
 
-export async function createBusiness(business: unknown) {
+export async function createBusiness(business: Business) {
 	const db1 = await openDB(gamePlayDB.name, 1);
 	db1.add(gamePlayDB.tables.business.name, business);
+}
+
+export async function getBusiness() {
+	const db1 = await openDB(gamePlayDB.name, 1);
+	return db1.getAll(gamePlayDB.tables.business.name);
 }

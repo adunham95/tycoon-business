@@ -17,7 +17,7 @@
 		let jsonObject = JSON.stringify(formObject);
 
 		console.log(jsonObject);
-		await createBusiness(jsonObject);
+		await createBusiness(formObject as Business);
 	}
 </script>
 
