@@ -14,10 +14,10 @@
 		name="Day"
 		class="color-white flex items-center justify-center bg-orange-400"
 	>
-		<h1 class=" text-5xl text-white">100</h1>
+		<h1 class=" text-5xl text-white">1</h1>
 	</AppWidget>
 	<AppIcon name="Help" class="bg-error" />
-	<AppIcon link="/warehouse" name="Warehouse" class="bg-secondary" />
-	<AppIcon link="/new-business" name="Create" class="bg-accent" />
-	<AppIcon link="/supply-depot" name="Supply Depot" class="bg-accent" />
+	<AppIcon link="/warehouse" name="Warehouse" />
+	<AppIcon link="/new-business" name="Create" />
+	<AppIcon link="/supply-depot" name="Supply Depot" />
 </main>

@@ -6,7 +6,7 @@
 	$: quantities = {};
 
 	const handleQuantityChange = (id: string, delta: number) => {
-		quantities[id] = Math.max((quantities[id] || 0) + delta, 1);
+		quantities[id] = Math.max((quantities[id] || 0) + delta, 0);
 	};
 </script>
 
