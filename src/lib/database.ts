@@ -62,6 +62,7 @@ export async function getSingleBusiness(id: number) {
 export async function updateMoney(delta: number) {
 	const db1 = await openDB(gamePlayDB.name);
 	db1.put(gamePlayDB.tables.player.name, delta, 'bankAccount');
+	return db1.get(gamePlayDB.tables.player.name, 'bankAccount');
 }
 
 export async function getMoney() {
