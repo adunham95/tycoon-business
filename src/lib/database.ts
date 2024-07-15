@@ -6,7 +6,9 @@ const gamePlayDB = {
 	tables: {
 		player: { name: 'player' },
 		products: { name: 'products', settings: { autoIncrement: true } },
-		business: { name: 'business', settings: { keyPath: 'id', autoIncrement: true } }
+		business: { name: 'business', settings: { keyPath: 'id', autoIncrement: true } },
+		subscriptions: { name: 'subscriptions', settings: { keyPath: 'id', autoIncrement: true } },
+		transactions: { name: 'transactions', settings: { keyPath: 'id', autoIncrement: true } }
 	}
 };
 
@@ -16,7 +18,7 @@ export function initializeDatabase() {
 			db.createObjectStore(settingsDB.tables.users.name);
 		}
 	});
-	openDB(gamePlayDB.name, 2, {
+	openDB(gamePlayDB.name, 3, {
 		upgrade(db, oldVersion, newVersion, transaction) {
 			switch (oldVersion) {
 				case 0:
@@ -30,15 +32,21 @@ export function initializeDatabase() {
 					);
 				// eslint-disable-next-line no-fallthrough
 				case 1:
-					upgradeFromV1toV2();
+					db.createObjectStore(gamePlayDB.tables.player.name);
+					transaction.objectStore(gamePlayDB.tables.player.name).put(0, 'bankAccount');
+				// eslint-disable-next-line no-fallthrough
+				case 2:
+					db.createObjectStore(
+						gamePlayDB.tables.transactions.name,
+						gamePlayDB.tables.transactions.settings
+					);
+					db.createObjectStore(
+						gamePlayDB.tables.subscriptions.name,
+						gamePlayDB.tables.subscriptions.settings
+					);
 					break;
 				default:
 					console.error('unknown db version');
-			}
-
-			function upgradeFromV1toV2() {
-				db.createObjectStore(gamePlayDB.tables.player.name);
-				transaction.objectStore(gamePlayDB.tables.player.name).put(0, 'bankAccount');
 			}
 		}
 	});
