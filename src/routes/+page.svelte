@@ -1,11 +1,9 @@
 <script lang="ts">
-	import { initializeDatabase } from '$lib/database';
 	import AppIcon from '$components/AppIcon.svelte';
 	import AppWidget from '$components/AppWidget.svelte';
 
 	export let data: any;
 
-	initializeDatabase();
 	let businesses: Business[] = [...data.business];
 
 	$: console.log(data);
@@ -17,7 +15,7 @@
 >
 	<AppWidget width={4} height={1} name="Bank">
 		<div class="flex h-full items-center justify-between">
-			<h1 class=" text-2xl text-white">$0</h1>
+			<h1 class=" text-2xl text-white">${data.money}</h1>
 			<a href="/bank" class="btn btn-ghost text-white">Visit Bank</a>
 		</div>
 	</AppWidget>

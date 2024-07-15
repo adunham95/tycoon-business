@@ -16,28 +16,55 @@ export function initializeDatabase() {
 			db.createObjectStore(settingsDB.tables.users.name);
 		}
 	});
-	openDB(gamePlayDB.name, 1, {
+	openDB(gamePlayDB.name, 2, {
 		upgrade(db, oldVersion, newVersion, transaction) {
-			db.createObjectStore(gamePlayDB.tables.player.name);
-			db.createObjectStore(gamePlayDB.tables.business.name, gamePlayDB.tables.business.settings);
-			db.createObjectStore(gamePlayDB.tables.products.name, gamePlayDB.tables.products.settings);
+			switch (oldVersion) {
+				case 0:
+					db.createObjectStore(
+						gamePlayDB.tables.business.name,
+						gamePlayDB.tables.business.settings
+					);
+					db.createObjectStore(
+						gamePlayDB.tables.products.name,
+						gamePlayDB.tables.products.settings
+					);
+				// eslint-disable-next-line no-fallthrough
+				case 1:
+					upgradeFromV1toV2();
+					break;
+				default:
+					console.error('unknown db version');
+			}
 
-			transaction.objectStore(gamePlayDB.tables.player.name).add(0, 'money');
+			function upgradeFromV1toV2() {
+				db.createObjectStore(gamePlayDB.tables.player.name);
+				transaction.objectStore(gamePlayDB.tables.player.name).put(0, 'bankAccount');
+			}
 		}
 	});
 }
 
 export async function createBusiness(business: Business) {
-	const db1 = await openDB(gamePlayDB.name, 1);
+	const db1 = await openDB(gamePlayDB.name);
 	db1.add(gamePlayDB.tables.business.name, business);
 }
 
 export async function getBusiness() {
-	const db1 = await openDB(gamePlayDB.name, 1);
+	const db1 = await openDB(gamePlayDB.name);
 	return db1.getAll(gamePlayDB.tables.business.name);
 }
 
 export async function getSingleBusiness(id: number) {
-	const db1 = await openDB(gamePlayDB.name, 1);
+	const db1 = await openDB(gamePlayDB.name);
 	return db1.get(gamePlayDB.tables.business.name, id);
+}
+
+export async function updateMoney(delta: number) {
+	const db1 = await openDB(gamePlayDB.name);
+	db1.put(gamePlayDB.tables.player.name, delta, 'bankAccount');
+}
+
+export async function getMoney() {
+	const db1 = await openDB(gamePlayDB.name);
+	return db1.get(gamePlayDB.tables.player.name, 'bankAccount');
 }
