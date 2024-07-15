@@ -4,6 +4,7 @@ const settingsDB = { name: 'settings', tables: { users: { name: 'user' } } };
 const gamePlayDB = {
 	name: 'gameplay',
 	tables: {
+		player: { name: 'player' },
 		products: { name: 'products', settings: { autoIncrement: true } },
 		business: { name: 'business', settings: { keyPath: 'id', autoIncrement: true } }
 	}
@@ -16,9 +17,12 @@ export function initializeDatabase() {
 		}
 	});
 	openDB(gamePlayDB.name, 1, {
-		upgrade(db) {
+		upgrade(db, oldVersion, newVersion, transaction) {
+			db.createObjectStore(gamePlayDB.tables.player.name);
 			db.createObjectStore(gamePlayDB.tables.business.name, gamePlayDB.tables.business.settings);
 			db.createObjectStore(gamePlayDB.tables.products.name, gamePlayDB.tables.products.settings);
+
+			transaction.objectStore(gamePlayDB.tables.player.name).add(0, 'money');
 		}
 	});
 }

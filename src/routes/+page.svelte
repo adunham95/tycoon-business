@@ -17,8 +17,8 @@
 >
 	<AppWidget width={4} height={1} name="Bank">
 		<div class="flex h-full items-center justify-between">
-			<h1 class=" text-2xl text-white">$1</h1>
-			<button class="btn btn-ghost text-white">Visit Bank</button>
+			<h1 class=" text-2xl text-white">$0</h1>
+			<a href="/bank" class="btn btn-ghost text-white">Visit Bank</a>
 		</div>
 	</AppWidget>
 	<AppWidget width={3} height={2} name="Details" />
