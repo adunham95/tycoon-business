@@ -2,10 +2,17 @@
 	import AppIcon from '$components/AppIcon.svelte';
 	import AppWidget from '$components/AppWidget.svelte';
 	import { convertToDollars } from '$lib/utils/convertToDollars';
+	import { goToNextDay } from '$lib/utils/goToNextDay';
 
 	export let data: any;
 
 	let businesses: Business[] = [...data.business];
+	let currentDay = data.currentDay;
+
+	async function handleNextDay() {
+		const { nextDay } = await goToNextDay();
+		currentDay = nextDay;
+	}
 
 	$: console.log(data);
 </script>
@@ -20,14 +27,17 @@
 			<a href="/bank" class="btn btn-ghost text-white">Visit Bank</a>
 		</div>
 	</AppWidget>
-	<AppWidget width={3} height={2} name="Details" />
+	<AppWidget width={3} height={2} name="Details">
+		<button on:click={handleNextDay}>Go To Next day</button>
+	</AppWidget>
+
 	<AppWidget
 		width={1}
 		height={1}
 		name="Day"
 		class="color-white flex items-center justify-center bg-orange-400"
 	>
-		<h1 class=" text-5xl text-white">1</h1>
+		<h1 class=" text-5xl text-white">{currentDay}</h1>
 	</AppWidget>
 	<AppIcon name="Help" class="bg-error" />
 	<AppIcon link="/warehouse" name="Warehouse" />

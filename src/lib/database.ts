@@ -18,7 +18,7 @@ export function initializeDatabase() {
 			db.createObjectStore(settingsDB.tables.users.name);
 		}
 	});
-	openDB(gamePlayDB.name, 3, {
+	openDB(gamePlayDB.name, 4, {
 		upgrade(db, oldVersion, newVersion, transaction) {
 			switch (oldVersion) {
 				case 0:
@@ -44,6 +44,9 @@ export function initializeDatabase() {
 						gamePlayDB.tables.subscriptions.name,
 						gamePlayDB.tables.subscriptions.settings
 					);
+				// eslint-disable-next-line no-fallthrough
+				case 3:
+					transaction.objectStore(gamePlayDB.tables.player.name).put(1, 'currentDay');
 					break;
 				default:
 					console.error('unknown db version');
@@ -76,4 +79,16 @@ export async function updateMoney(delta: number) {
 export async function getMoney() {
 	const db1 = await openDB(gamePlayDB.name);
 	return db1.get(gamePlayDB.tables.player.name, 'bankAccount');
+}
+
+export async function getCurrentDay() {
+	const db1 = await openDB(gamePlayDB.name);
+	return db1.get(gamePlayDB.tables.player.name, 'currentDay');
+}
+
+export async function setNextDay() {
+	const db1 = await openDB(gamePlayDB.name);
+	const currentDay = await db1.get(gamePlayDB.tables.player.name, 'currentDay');
+	db1.put(gamePlayDB.tables.player.name, currentDay + 1, 'currentDay');
+	return currentDay + 1;
 }
