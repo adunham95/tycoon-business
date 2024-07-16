@@ -1,4 +1,6 @@
-import { getBusiness, getCurrentDay, getMoney, initializeDatabase } from '$lib/database';
+import { getBusiness, initializeDatabase } from '$lib/database';
+import { getMoney } from '$lib/database/bank';
+import { getCurrentDay } from '$lib/database/currentDay';
 
 export async function load() {
 	initializeDatabase();

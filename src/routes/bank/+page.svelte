@@ -1,7 +1,7 @@
 <script>
 	import ButtonModal from '$components/ButtonModal.svelte';
 	import PageHeader from '$components/PageHeader.svelte';
-	import { updateMoney } from '$lib/database';
+	import { updateMoney } from '$lib/database/bank';
 	import { convertToDollars } from '$lib/utils/convertToDollars';
 
 	export let data;

@@ -1,4 +1,4 @@
-import { getMoney } from '$lib/database';
+import { getMoney } from '$lib/database/bank';
 
 export async function load() {
 	const money = (await getMoney()) || 0;

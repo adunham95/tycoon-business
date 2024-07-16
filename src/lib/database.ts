@@ -1,14 +1,15 @@
 import { openDB } from 'idb';
 
-const settingsDB = { name: 'settings', tables: { users: { name: 'user' } } };
-const gamePlayDB = {
+export const settingsDB = { name: 'settings', tables: { users: { name: 'user' } } };
+export const gamePlayDB = {
 	name: 'gameplay',
 	tables: {
 		player: { name: 'player' },
 		products: { name: 'products', settings: { autoIncrement: true } },
 		business: { name: 'business', settings: { keyPath: 'id', autoIncrement: true } },
 		subscriptions: { name: 'subscriptions', settings: { keyPath: 'id', autoIncrement: true } },
-		transactions: { name: 'transactions', settings: { keyPath: 'id', autoIncrement: true } }
+		transactions: { name: 'transactions', settings: { keyPath: 'id', autoIncrement: true } },
+		realEstate: { name: 'real-estate', settings: { keyPath: 'id', autoIncrement: true } }
 	}
 };
 
@@ -18,7 +19,7 @@ export function initializeDatabase() {
 			db.createObjectStore(settingsDB.tables.users.name);
 		}
 	});
-	openDB(gamePlayDB.name, 4, {
+	openDB(gamePlayDB.name, 5, {
 		upgrade(db, oldVersion, newVersion, transaction) {
 			switch (oldVersion) {
 				case 0:
@@ -47,7 +48,14 @@ export function initializeDatabase() {
 				// eslint-disable-next-line no-fallthrough
 				case 3:
 					transaction.objectStore(gamePlayDB.tables.player.name).put(1, 'currentDay');
+				// eslint-disable-next-line no-fallthrough
+				case 4:
+					db.createObjectStore(
+						gamePlayDB.tables.realEstate.name,
+						gamePlayDB.tables.realEstate.settings
+					);
 					break;
+
 				default:
 					console.error('unknown db version');
 			}
@@ -55,40 +63,21 @@ export function initializeDatabase() {
 	});
 }
 
+export async function openGameDB() {
+	return await openDB(gamePlayDB.name);
+}
+
 export async function createBusiness(business: Business) {
-	const db1 = await openDB(gamePlayDB.name);
+	const db1 = await openGameDB();
 	db1.add(gamePlayDB.tables.business.name, business);
 }
 
 export async function getBusiness() {
-	const db1 = await openDB(gamePlayDB.name);
+	const db1 = await openGameDB();
 	return db1.getAll(gamePlayDB.tables.business.name);
 }
 
 export async function getSingleBusiness(id: number) {
-	const db1 = await openDB(gamePlayDB.name);
+	const db1 = await openGameDB();
 	return db1.get(gamePlayDB.tables.business.name, id);
-}
-
-export async function updateMoney(delta: number) {
-	const db1 = await openDB(gamePlayDB.name);
-	db1.put(gamePlayDB.tables.player.name, delta, 'bankAccount');
-	return db1.get(gamePlayDB.tables.player.name, 'bankAccount');
-}
-
-export async function getMoney() {
-	const db1 = await openDB(gamePlayDB.name);
-	return db1.get(gamePlayDB.tables.player.name, 'bankAccount');
-}
-
-export async function getCurrentDay() {
-	const db1 = await openDB(gamePlayDB.name);
-	return db1.get(gamePlayDB.tables.player.name, 'currentDay');
-}
-
-export async function setNextDay() {
-	const db1 = await openDB(gamePlayDB.name);
-	const currentDay = await db1.get(gamePlayDB.tables.player.name, 'currentDay');
-	db1.put(gamePlayDB.tables.player.name, currentDay + 1, 'currentDay');
-	return currentDay + 1;
 }

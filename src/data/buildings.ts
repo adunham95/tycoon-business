@@ -66,7 +66,16 @@ export function generateBuildings(numberRows = 5) {
 		});
 	}
 
-	return buildings.sort((a, b) => a.rent - b.rent);
+	return buildings.sort((a, b) => {
+		if (a.street.streetName < b.street.streetName) {
+			return -1;
+		}
+		if (a.street.streetName > b.street.streetName) {
+			return 1;
+		}
+
+		return a.streetNumber - b.streetNumber;
+	});
 }
 
 function getStreetAddress(max = 9999, min = 100) {
