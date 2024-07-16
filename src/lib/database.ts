@@ -9,7 +9,7 @@ export const gamePlayDB = {
 		business: { name: 'business', settings: { keyPath: 'id', autoIncrement: true } },
 		subscriptions: { name: 'subscriptions', settings: { keyPath: 'id', autoIncrement: true } },
 		transactions: { name: 'transactions', settings: { keyPath: 'id', autoIncrement: true } },
-		realEstate: { name: 'real-estate', settings: { keyPath: 'id', autoIncrement: true } }
+		realEstate: { name: 'real-estate', settings: { keyPath: 'id' } }
 	}
 };
 

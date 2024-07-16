@@ -1,8 +1,8 @@
-import { generateBuildings } from '$data/buildings';
 import {} from '$lib/database';
+import { getRentableBuildings } from '$lib/database/realEstate';
 
 export async function load() {
-	const buildings = generateBuildings(100);
+	const buildings = await getRentableBuildings();
 	console.log(buildings);
 	return { buildings };
 }
