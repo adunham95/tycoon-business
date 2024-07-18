@@ -1,12 +1,11 @@
-import { openGameDB, gamePlayDB } from '$lib/database';
+const key = 'bankAccount';
 
 export async function updateMoney(delta: number) {
-	const db1 = await openGameDB();
-	db1.put(gamePlayDB.tables.player.name, delta, 'bankAccount');
-	return db1.get(gamePlayDB.tables.player.name, 'bankAccount');
+	const money = localStorage.setItem(key, String(delta));
+	return money;
 }
 
 export async function getMoney() {
-	const db1 = await openGameDB();
-	return db1.get(gamePlayDB.tables.player.name, 'bankAccount');
+	const money = localStorage.getItem(key);
+	return money || 0;
 }

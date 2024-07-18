@@ -64,6 +64,7 @@ export function initializeDatabase() {
 }
 
 export async function openGameDB() {
+	await initializeDatabase();
 	return await openDB(gamePlayDB.name);
 }
 

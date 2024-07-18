@@ -1,18 +1,16 @@
-import { gamePlayDB, openGameDB } from '$lib/database';
+const key = 'currentDay';
 
 export async function getCurrentDay() {
-	const db1 = await openGameDB();
-	return db1.get(gamePlayDB.tables.player.name, 'currentDay');
+	return parseInt(localStorage.getItem(key) || '0') || 0;
 }
 
 export async function setNextDay() {
-	const db1 = await openGameDB();
-	const currentDay = await db1.get(gamePlayDB.tables.player.name, 'currentDay');
-	db1.put(gamePlayDB.tables.player.name, currentDay + 1, 'currentDay');
-	return currentDay + 1;
+	const today = await getCurrentDay();
+	const nextDay = today + 1;
+	setDay(nextDay);
+	return nextDay;
 }
 
 export async function setDay(day: number) {
-	const gameDB = await openGameDB();
-	return gameDB.put(gamePlayDB.tables.player.name, day, 'currentDay');
+	return localStorage.setItem(key, String(day));
 }
