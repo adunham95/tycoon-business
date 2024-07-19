@@ -17,6 +17,21 @@ export async function getRentableBuildings() {
 	return rentalBuildings;
 }
 
+export async function getMyBuildings() {
+	const myBuildingData = await gamePlayDB.realEstate
+		.filter((building) => building.status === 'Rented')
+		.toArray();
+
+	const myBuildings = myBuildingData.map((building) => {
+		return {
+			...building,
+			buildingType: getBuildingType(building.buildingTypeId),
+			street: getStreet(building.streetId)
+		};
+	});
+
+	return myBuildings;
+}
 export function saveRentableBuildings(buildingsToAdd: number) {
 	const buildings = generateBuildings(buildingsToAdd);
 	const buildingDetails = buildings.map((building) => {
