@@ -9,6 +9,7 @@ interface Friend {
 export interface RealEstateDB {
 	id: string;
 	rent: number;
+	deposit: number;
 	buildingTypeId: string;
 	streetId: number;
 	streetNumber: number;

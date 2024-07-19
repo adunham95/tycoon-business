@@ -35,20 +35,25 @@ export const streetList = [
 	{ id: 34, number: 808, streetName: 'Pixel Parkway', traffic: 50, quality: 7 },
 	{ id: 35, number: 909, streetName: 'Bandwidth Boulevard', traffic: 95, quality: 8 },
 	{ id: 36, number: 1010, streetName: 'Debug Drive', traffic: 38, quality: 6 },
-	{ id: 37, number: 2525, streetName: 'Array Loop', traffic: 71, quality: 6 }
+	{ id: 37, number: 2525, streetName: 'Array Loop', traffic: 71, quality: 6 },
+	{ id: 38, number: 1001, streetName: 'Luxury Lane', traffic: 99, quality: 10 },
+	{ id: 39, number: 2020, streetName: 'Prestige Parkway', traffic: 99, quality: 9 },
+	{ id: 40, number: 12, streetName: 'Elite Estates', traffic: 99, quality: 10 }
 ];
 
 export const buildingTypes = [
-	{ id: 'm1', size: 200, storage: 5, baseRent: 1 },
-	{ id: 'm2', size: 500, storage: 25, baseRent: 5 },
-	{ id: 'm2', size: 750, storage: 30, baseRent: 6 },
-	{ id: 'r1', size: 2000, storage: 100, baseRent: 10 },
-	{ id: 'r1', size: 2000, storage: 100, baseRent: 10 },
-	{ id: 'r2', size: 4000, storage: 200, baseRent: 20 },
-	{ id: 'r3', size: 8000, storage: 400, baseRent: 50 },
-	{ id: 'r4', size: 12000, storage: 650, baseRent: 50 },
-	{ id: 'r5', size: 20000, storage: 800, baseRent: 100 },
-	{ id: 'r6', size: 30000, storage: 1000, baseRent: 150 }
+	{ id: 'm1', type: 'Mini', size: 200, storage: 5, baseRent: 10, breakRoom: false },
+	{ id: 'm2', type: 'Mini', size: 500, storage: 25, baseRent: 50, breakRoom: false },
+	{ id: 'm3', type: 'Mini', size: 750, storage: 30, baseRent: 60, breakRoom: false },
+	{ id: 'r1', type: 'Retail', size: 2000, storage: 100, baseRent: 100, breakRoom: false },
+	{ id: 'r2', type: 'Retail', size: 4000, storage: 200, baseRent: 200, breakRoom: true },
+	{ id: 'r3', type: 'Retail', size: 8000, storage: 400, baseRent: 500, breakRoom: true },
+	{ id: 'r4', type: 'Retail', size: 12000, storage: 650, baseRent: 500, breakRoom: true },
+	{ id: 'r5', type: 'Retail', size: 20000, storage: 800, baseRent: 1000, breakRoom: true },
+	{ id: 'r6', type: 'Retail', size: 30000, storage: 1000, baseRent: 1500, breakRoom: true },
+	{ id: 'ss1', type: 'Superstore', size: 100000, storage: 10000, baseRent: 5000, breakRoom: true },
+	{ id: 'ss2', type: 'Superstore', size: 150000, storage: 15000, baseRent: 10000, breakRoom: true },
+	{ id: 'ss3', type: 'Superstore', size: 250000, storage: 30000, baseRent: 15000, breakRoom: true }
 ];
 
 export function getBuildingType(buildingTypeId: string) {
@@ -64,7 +69,7 @@ export function generateBuildings(numberRows = 5) {
 	while (buildings.length < numberRows) {
 		const street = streetList[Math.floor(Math.random() * streetList.length)];
 		const type = buildingTypes[Math.floor(Math.random() * buildingTypes.length)];
-		const rent = parseFloat(((type.baseRent + street.traffic) * (street.quality / 2)).toFixed(0));
+		const rent = parseFloat((type.baseRent * street.traffic * (street.quality / 2)).toFixed(0));
 		buildings.push({
 			streetId: street.id,
 			streetNumber: getStreetAddress(street.number),

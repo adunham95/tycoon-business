@@ -23,6 +23,7 @@ export function saveRentableBuildings(buildingsToAdd: number) {
 		return {
 			id: `${building.streetId}-${building.streetNumber}`,
 			rent: building.rent,
+			deposit: building.rent * 30,
 			buildingTypeId: building.buildingTypeId,
 			streetId: building.streetId,
 			streetNumber: building.streetNumber,
@@ -34,4 +35,16 @@ export function saveRentableBuildings(buildingsToAdd: number) {
 
 export function clearBuildings() {
 	gamePlayDB.realEstate.clear();
+}
+
+export async function getBuilding(id: string) {
+	const buildingData = await gamePlayDB.realEstate.get(id);
+
+	if (!buildingData) return;
+
+	return {
+		...buildingData,
+		buildingType: getBuildingType(buildingData.buildingTypeId),
+		street: getStreet(buildingData.streetId)
+	};
 }
