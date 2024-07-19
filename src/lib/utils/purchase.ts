@@ -29,9 +29,6 @@ export async function rentBuilding(buildingID: string) {
 		await updateMoney(parseFloat(money) - amount);
 	}
 
-	gamePlayDB.realEstate.update(buildingID, { status: 'Rented' }).then(function (updated) {
-		if (updated) console.log('Friend number 2 was renamed to Number 2');
-		else console.log('Nothing was updated - there was no friend with primary key: 2');
-	});
+	gamePlayDB.realEstate.update(buildingID, { status: 'Rented' });
 	return true;
 }
