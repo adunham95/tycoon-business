@@ -45,6 +45,10 @@
 	<AppIcon link="/supply-depot" name="Supply Depot" />
 	<AppIcon link="/real-estate" name="Real Estate" />
 	{#each businesses as business}
-		<AppIcon link={`/business/${business.id}`} name={business.businessName} />
+		<AppIcon
+			color={business.color}
+			link={`/business/${business.id}`}
+			name={business.businessName}
+		/>
 	{/each}
 </main>

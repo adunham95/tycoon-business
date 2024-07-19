@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { createBusiness, initializeDatabase } from '$lib/database';
 	import ColorInput from '$components/inputs/ColorInput.svelte';
 	import TextInput from '$components/inputs/TextInput.svelte';
 	import PageHeader from '$components/PageHeader.svelte';
+	import type { BusinessDB } from '$lib/db';
+	import { createBusiness } from '$lib/database/bussinesses';
 
 	async function saveBusiness(e: any) {
-		initializeDatabase();
 		if (!e) return;
 		console.log(e);
 		let formData = new FormData(e.target);
@@ -18,18 +18,18 @@
 		let jsonObject = JSON.stringify(formObject);
 
 		console.log(jsonObject);
-		await createBusiness(formObject as Business);
+		await createBusiness(formObject as BusinessDB);
 	}
 </script>
 
 <PageHeader title="New Business" />
 
 <form class="px-4" on:submit|preventDefault={saveBusiness}>
-	<TextInput primaryLabel="Name" placeholder="My Business Name" name="businessName" required />
+	<TextInput primaryLabel="Name" placeholder="My Business Name" name="name" required />
 	<div class="h-2"></div>
 	<ColorInput />
 	<div class="h-2"></div>
-	<select name="category" class="select w-full max-w-xs">
+	<select name="type" class="select w-full max-w-xs">
 		<option disabled selected>Category</option>
 		<option>Bar</option>
 		<option>Electronics</option>
