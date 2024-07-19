@@ -38,7 +38,7 @@ export const streetList = [
 	{ id: 37, number: 2525, streetName: 'Array Loop', traffic: 71, quality: 6 },
 	{ id: 38, number: 1001, streetName: 'Luxury Lane', traffic: 99, quality: 10 },
 	{ id: 39, number: 2020, streetName: 'Prestige Parkway', traffic: 99, quality: 9 },
-	{ id: 40, number: 12, streetName: 'Elite Estates', traffic: 99, quality: 10 }
+	{ id: 40, number: 12, streetName: 'Elite Estates', traffic: 99, quality: 20 }
 ];
 
 export const buildingTypes = [
