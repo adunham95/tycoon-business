@@ -42,20 +42,17 @@
 		<div class="card-body">
 			<h2 class="card-title">Transactions</h2>
 			<ul class="divide-y divide-gray-200">
-				<li class="flex items-center justify-between py-2">
-					<div>
-						<p class="text-lg font-bold">Deposit</p>
-						<p class="text-xs">Day 1</p>
-					</div>
-					<span class="inline-block text-xl font-bold">+{convertToDollars(10000)}</span>
-				</li>
-				<li class="flex items-center justify-between py-2">
-					<div>
-						<p class="text-lg font-bold">Salary</p>
-						<p class="text-xs">Day 1</p>
-					</div>
-					<span class="inline-block text-xl font-bold">+{convertToDollars(1000)}</span>
-				</li>
+				{#each data.transactions as transaction}
+					<li class="flex items-center justify-between py-2">
+						<div>
+							<p class="text-lg font-bold">{transaction.title}</p>
+							<p class="text-xs">Day {transaction.day}</p>
+						</div>
+						<span class="inline-block text-xl font-bold"
+							>{convertToDollars(transaction.amount * -1)}</span
+						>
+					</li>
+				{/each}
 			</ul>
 		</div>
 	</div>

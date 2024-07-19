@@ -1,5 +1,7 @@
+import { getMoney, purchase } from '$lib/database/bank';
 import { setNextDay } from '$lib/database/currentDay';
 import { saveRentableBuildings } from '$lib/database/realEstate';
+import { createTransaction, getSubscriptions } from '$lib/database/transactions';
 import { gamePlayDB } from '$lib/db';
 import { rollDice } from './rollDice';
 
@@ -26,5 +28,15 @@ export async function goToNextDay() {
 
 	saveRentableBuildings(buildingsToAdd);
 
-	return { nextDay };
+	const subscriptions = await getSubscriptions();
+
+	for (let index = 0; index < subscriptions.length; index++) {
+		const subscription = subscriptions[index];
+		await createTransaction(nextDay, subscription.title, subscription.amount);
+		await purchase(subscription.amount);
+	}
+
+	const money = getMoney();
+
+	return { nextDay, money };
 }

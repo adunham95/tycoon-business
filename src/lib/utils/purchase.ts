@@ -6,9 +6,9 @@ import { gamePlayDB } from '$lib/db';
 export function purchase(amount: number, title: string) {
 	const money = getMoney();
 	const currentDay = getCurrentDay();
-	if (money && parseInt(money) >= amount) {
+	if (money && money >= amount) {
 		createTransaction(currentDay, title, amount);
-		updateMoney(parseFloat(money) - amount);
+		updateMoney(money - amount);
 	}
 	return true;
 }
@@ -22,11 +22,11 @@ export async function rentBuilding(buildingID: string) {
 
 	console.log({ building, money, currentDay, amount, title });
 
-	if (money && parseInt(money) >= amount) {
+	if (money && money >= amount) {
 		console.log('can rent');
 		await createTransaction(currentDay, `Deposit ${title}`, amount);
 		await createSubscription(`Rent ${title}`, amount);
-		await updateMoney(parseFloat(money) - amount);
+		await updateMoney(money - amount);
 	}
 
 	gamePlayDB.realEstate.update(buildingID, { status: 'Rented' });

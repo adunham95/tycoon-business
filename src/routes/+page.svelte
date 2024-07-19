@@ -8,10 +8,12 @@
 
 	let businesses: Business[] = [...data.business];
 	let currentDay = data.currentDay;
+	let money = data.money;
 
 	async function handleNextDay() {
-		const { nextDay } = await goToNextDay();
+		const { nextDay, money: updatedMoney } = await goToNextDay();
 		currentDay = nextDay;
+		money = updatedMoney;
 	}
 
 	$: console.log(data);
@@ -23,7 +25,7 @@
 >
 	<AppWidget width={4} height={1} name="Bank">
 		<div class="flex h-full items-center justify-between">
-			<h1 class=" text-2xl text-white">{convertToDollars(data.money)}</h1>
+			<h1 class=" text-2xl text-white">{convertToDollars(money)}</h1>
 			<a href="/bank" class="btn btn-ghost text-white">Visit Bank</a>
 		</div>
 	</AppWidget>

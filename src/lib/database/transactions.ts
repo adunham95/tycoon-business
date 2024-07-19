@@ -17,3 +17,7 @@ export async function createSubscription(title: string, amount: number) {
 		amount
 	});
 }
+
+export async function getSubscriptions() {
+	return gamePlayDB.subscriptions.toArray();
+}

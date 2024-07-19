@@ -7,6 +7,5 @@ export async function load() {
 	const money = (await getMoney()) || 0;
 	const currentDay = (await getCurrentDay()) || 0;
 
-	console.log(business);
 	return { business, money, currentDay };
 }
