@@ -13,3 +13,7 @@ export async function createBusiness(business: BusinessDB) {
 export async function getBusiness() {
 	return await gamePlayDB.business.toArray();
 }
+
+export async function getSingleBusiness(id: number) {
+	return await gamePlayDB.business.get(id);
+}

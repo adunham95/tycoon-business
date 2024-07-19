@@ -3,7 +3,7 @@
 	import TextInput from '$components/inputs/TextInput.svelte';
 	import PageHeader from '$components/PageHeader.svelte';
 	import type { BusinessDB } from '$lib/db';
-	import { createBusiness } from '$lib/database/bussinesses';
+	import { createBusiness } from '$lib/database/businesses';
 
 	async function saveBusiness(e: any) {
 		if (!e) return;

@@ -1,5 +1,5 @@
 type Business = {
-	id: number;
+	uuid: number;
 	businessName: string;
 	color: string;
 };

@@ -47,7 +47,7 @@
 	{#each businesses as business}
 		<AppIcon
 			color={business.color}
-			link={`/business/${business.id}`}
+			link={`/business/${business.uuid}`}
 			name={business.businessName}
 		/>
 	{/each}
