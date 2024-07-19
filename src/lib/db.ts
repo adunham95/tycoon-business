@@ -13,7 +13,7 @@ export interface RealEstateDB {
 	buildingTypeId: string;
 	streetId: number;
 	streetNumber: number;
-	type: string;
+	status: string;
 }
 
 export interface BusinessDB {
@@ -21,6 +21,19 @@ export interface BusinessDB {
 	name: string;
 	color: string;
 	type: string;
+}
+
+export interface BankTransitionsDB {
+	id: number;
+	day: number;
+	title: string;
+	amount: number;
+}
+
+export interface SubscriptionsDB {
+	id: number;
+	title: string;
+	amount: number;
 }
 
 const db = new Dexie('FriendsDatabase') as Dexie & {
@@ -37,6 +50,8 @@ const gamePlayDB = new Dexie('GamePlayDatabase') as Dexie & {
 	>;
 
 	business: EntityTable<BusinessDB, 'uuid'>;
+	bankTransactions: EntityTable<BankTransitionsDB, 'id'>;
+	subscriptions: EntityTable<SubscriptionsDB, 'id'>;
 };
 
 // Schema declaration:
@@ -44,9 +59,11 @@ db.version(1).stores({
 	friends: '++id, name, age' // primary key "id" (for the runtime!)
 });
 
-gamePlayDB.version(2).stores({
-	realEstate: 'id, type, streetId, buildingTypeId, rent, streetNumber',
-	business: '++uuid, name, color, type'
+gamePlayDB.version(3).stores({
+	realEstate: 'id, status, streetId, buildingTypeId, rent, streetNumber',
+	business: '++uuid, name, color, type',
+	bankTransactions: '++id, day, title, amount',
+	subscriptions: '++id, title, amount'
 });
 
 export type { Friend };

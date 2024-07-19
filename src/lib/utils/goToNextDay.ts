@@ -8,7 +8,7 @@ export async function goToNextDay() {
 
 	//Remove For Rent Buildings
 	await gamePlayDB.realEstate
-		.where('type')
+		.where('status')
 		.equals('for-rent')
 		.modify((value, ref) => {
 			console.log({ value, ref });

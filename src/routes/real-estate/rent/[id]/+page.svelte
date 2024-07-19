@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { convertToDollars } from '$lib/utils/convertToDollars';
 	import { numberWithCommas } from '$lib/utils/numbersWithCommas';
+	import { rentBuilding } from '$lib/utils/purchase';
 	export let data: any;
 	console.log(data);
 </script>
@@ -46,6 +47,6 @@
 				</div>
 			</div>
 		</div>
-		<button class="btn btn-primary w-full">Rent</button>
+		<button class="btn btn-primary w-full" on:click={() => rentBuilding(data.id)}>Rent</button>
 	</div>
 </div>

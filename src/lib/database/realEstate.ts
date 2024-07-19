@@ -3,7 +3,7 @@ import { gamePlayDB } from '$lib/db';
 
 export async function getRentableBuildings() {
 	const rentalBuildingData = await gamePlayDB.realEstate
-		.filter((building) => building.type === 'for-rent')
+		.filter((building) => building.status === 'for-rent')
 		.toArray();
 
 	const rentalBuildings = rentalBuildingData.map((building) => {
@@ -27,7 +27,7 @@ export function saveRentableBuildings(buildingsToAdd: number) {
 			buildingTypeId: building.buildingTypeId,
 			streetId: building.streetId,
 			streetNumber: building.streetNumber,
-			type: 'for-rent'
+			status: 'for-rent'
 		};
 	});
 	gamePlayDB.realEstate.bulkAdd(buildingDetails);

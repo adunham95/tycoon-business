@@ -5,14 +5,14 @@ export async function updateMoney(delta: number) {
 	return money;
 }
 
-export async function getMoney() {
+export function getMoney() {
 	const money = localStorage.getItem(key);
 	return money || 0;
 }
 
 export function purchaseAmount(amount: number) {
-	const money = localStorage.getItem(key);
+	const money = getMoney();
 	if (money && parseInt(money) >= amount) {
-		localStorage.setItem(key, String(parseFloat(money) - amount));
+		updateMoney(parseFloat(money) - amount);
 	}
 }

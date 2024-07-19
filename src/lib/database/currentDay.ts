@@ -1,16 +1,16 @@
 const key = 'currentDay';
 
-export async function getCurrentDay() {
+export function getCurrentDay() {
 	return parseInt(localStorage.getItem(key) || '0') || 0;
 }
 
-export async function setNextDay() {
-	const today = await getCurrentDay();
+export function setNextDay() {
+	const today = getCurrentDay();
 	const nextDay = today + 1;
 	setDay(nextDay);
 	return nextDay;
 }
 
-export async function setDay(day: number) {
+export function setDay(day: number) {
 	return localStorage.setItem(key, String(day));
 }
