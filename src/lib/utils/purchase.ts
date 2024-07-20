@@ -3,11 +3,11 @@ import { getCurrentDay } from '$lib/database/currentDay';
 import { getBuilding } from '$lib/database/realEstate';
 import { createSubscription, createTransaction } from '$lib/database/transactions';
 import { gamePlayDB } from '$lib/db';
-export function purchase(amount: number, title: string) {
+export function purchase(amount: number, title: string, recipt?: string[]) {
 	const money = getMoney();
 	const currentDay = getCurrentDay();
 	if (money && money >= amount) {
-		createTransaction(currentDay, title, amount);
+		createTransaction(currentDay, title, amount, recipt);
 		updateMoney(money - amount);
 	}
 	return true;

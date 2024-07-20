@@ -1,4 +1,4 @@
-export const supplies = [
+export const appliances = [
 	{
 		id: 'bar',
 		name: 'Bar',

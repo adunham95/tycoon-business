@@ -28,12 +28,20 @@ export interface BankTransitionsDB {
 	day: number;
 	title: string;
 	amount: number;
+	items?: string[];
 }
 
 export interface SubscriptionsDB {
 	id: number;
 	title: string;
 	amount: number;
+}
+
+export interface MyProductsDB {
+	id: string;
+	buildingID: string;
+	productID: string;
+	count: number;
 }
 
 const db = new Dexie('FriendsDatabase') as Dexie & {
@@ -52,6 +60,7 @@ const gamePlayDB = new Dexie('GamePlayDatabase') as Dexie & {
 	business: EntityTable<BusinessDB, 'uuid'>;
 	bankTransactions: EntityTable<BankTransitionsDB, 'id'>;
 	subscriptions: EntityTable<SubscriptionsDB, 'id'>;
+	myProducts: EntityTable<MyProductsDB, 'id'>;
 };
 
 // Schema declaration:
@@ -63,7 +72,8 @@ gamePlayDB.version(3).stores({
 	realEstate: 'id, status, streetId, buildingTypeId, rent, streetNumber',
 	business: '++uuid, name, color, type',
 	bankTransactions: '++id, day, title, amount',
-	subscriptions: '++id, title, amount'
+	subscriptions: '++id, title, amount',
+	myProducts: 'id, buildingID, productID, [buildingID+productID]'
 });
 
 export type { Friend };

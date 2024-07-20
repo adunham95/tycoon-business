@@ -1,11 +1,17 @@
 import { gamePlayDB } from '$lib/db';
 
-export async function createTransaction(day: number, title: string, amount: number) {
+export async function createTransaction(
+	day: number,
+	title: string,
+	amount: number,
+	items?: string[]
+) {
 	console.log({ day, title, amount });
 	const id = await gamePlayDB.bankTransactions.add({
 		day,
 		title,
-		amount
+		amount,
+		items
 	});
 
 	return id;

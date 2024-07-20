@@ -1,7 +1,7 @@
 <script lang="ts">
 	import ProductItem from '$components/inputs/ProductItem.svelte';
 	import PageHeader from '$components/PageHeader.svelte';
-	import { supplies } from '$data/supplies';
+	import { appliances } from '$data/appliances';
 
 	let quantities: { [key: string]: number };
 	$: quantities = {};
@@ -16,7 +16,7 @@
 <section class="w-full pb-8">
 	<div class="container grid gap-6 px-4 md:gap-8 md:px-6">
 		<div class="grid gap-8">
-			{#each supplies as item}
+			{#each appliances as item}
 				<ProductItem {...item} {quantities} {handleQuantityChange} />
 			{/each}
 		</div>
