@@ -14,7 +14,7 @@
 		>
 			<PlaceholderIcon className="text-muted-foreground w-full h-full" />
 		</div>
-		<span class="text-muted-foreground text-xs font-bold">{name}</span>
+		<span class="text-muted-foreground text-ellipsis text-center text-xs font-bold">{name}</span>
 	</a>
 {:else}
 	<button class="flex flex-col items-center gap-1">
@@ -24,6 +24,6 @@
 		>
 			<PlaceholderIcon className="text-muted-foreground w-full h-full" />
 		</div>
-		<span class="text-muted-foreground text-xs font-bold">{name}</span>
+		<span class="text-muted-foreground text-ellipsis text-center text-xs font-bold">{name}</span>
 	</button>
 {/if}

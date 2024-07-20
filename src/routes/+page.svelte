@@ -41,16 +41,12 @@
 	>
 		<h1 class=" text-5xl text-white">{currentDay}</h1>
 	</AppWidget>
-	<AppIcon name="Help" class="bg-error" />
+	<AppIcon link="/warehouse/my" name="My Warehouse" color="#8B8C89" />
 	<AppIcon link="/warehouse" name="Warehouse" />
 	<AppIcon link="/new-business" name="Create" />
 	<AppIcon link="/supply-depot" name="Supply Depot" />
 	<AppIcon link="/real-estate" name="Real Estate" />
 	{#each businesses as business}
-		<AppIcon
-			color={business.color}
-			link={`/business/${business.uuid}`}
-			name={business.businessName}
-		/>
+		<AppIcon color={business.color} link={`/business/${business.uuid}`} name={business.name} />
 	{/each}
 </main>

@@ -21,3 +21,8 @@ export async function createSubscription(title: string, amount: number) {
 export async function getSubscriptions() {
 	return gamePlayDB.subscriptions.toArray();
 }
+
+export async function clearTransactions() {
+	await gamePlayDB.bankTransactions.clear();
+	await gamePlayDB.subscriptions.clear();
+}

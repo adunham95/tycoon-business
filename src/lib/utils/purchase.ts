@@ -18,7 +18,7 @@ export async function rentBuilding(buildingID: string) {
 	const currentDay = getCurrentDay();
 	const building = await getBuilding(buildingID);
 	const amount = building?.deposit || 0;
-	const title = `${building?.streetNumber} ${building?.street?.streetName} `;
+	const title = `${building?.streetNumber} ${building?.street?.streetName}`;
 
 	console.log({ building, money, currentDay, amount, title });
 
