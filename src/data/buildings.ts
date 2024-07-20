@@ -56,7 +56,19 @@ export const buildingTypes = [
 	{ id: 'ss3', type: 'Superstore', size: 250000, storage: 30000, baseRent: 15000, breakRoom: true }
 ];
 
+const userWarehouses = [
+	{
+		id: 'w1',
+		type: 'Warehouse',
+		size: 0,
+		storage: 10000,
+		baseRent: 50,
+		breakRoom: true
+	}
+];
+
 export function getBuildingType(buildingTypeId: string) {
+	if (buildingTypeId === 'w1') return userWarehouses[0];
 	return buildingTypes.find((b) => b.id === buildingTypeId);
 }
 

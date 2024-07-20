@@ -96,3 +96,7 @@ export const products = [
 		company: companies.aero
 	}
 ];
+
+export function getProduct(id: string) {
+	return products.find((product) => product.id === id);
+}
