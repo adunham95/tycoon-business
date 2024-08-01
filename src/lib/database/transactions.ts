@@ -24,6 +24,21 @@ export async function createSubscription(title: string, amount: number) {
 	});
 }
 
+export async function createLoanItem(
+	amount: number,
+	payment: number,
+	length: number,
+	endDay: number
+) {
+	await gamePlayDB.myLoans.add({
+		amount,
+		length,
+		payment,
+		endDay,
+		paid: false
+	});
+}
+
 export async function getSubscriptions() {
 	return gamePlayDB.subscriptions.toArray();
 }

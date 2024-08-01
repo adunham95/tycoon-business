@@ -1,7 +1,7 @@
 import { getMoney, updateMoney } from '$lib/database/bank';
 import { getCurrentDay } from '$lib/database/currentDay';
 import { getBuilding } from '$lib/database/realEstate';
-import { createSubscription, createTransaction } from '$lib/database/transactions';
+import { createLoanItem, createSubscription, createTransaction } from '$lib/database/transactions';
 import { gamePlayDB } from '$lib/db';
 export function purchase(amount: number, title: string, recipt?: string[]) {
 	const money = getMoney();
@@ -33,4 +33,16 @@ export async function rentBuilding(buildingID: string) {
 
 	gamePlayDB.realEstate.update(buildingID, { status: 'Rented' });
 	return true;
+}
+
+export async function createLoan(loanAmount: number, loanLength: number, loanPayment: number) {
+	const money = getMoney();
+	const currentDay = getCurrentDay();
+	const endDay = currentDay + loanLength;
+
+	await createTransaction(currentDay, 'Loan', loanAmount * -1);
+	await updateMoney(money + loanAmount);
+	await createLoanItem(loanAmount, loanPayment, loanLength, endDay);
+
+	console.log({ money, currentDay, loanAmount, loanLength });
 }
