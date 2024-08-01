@@ -14,6 +14,7 @@ export interface RealEstateDB {
 	streetId: number;
 	streetNumber: number;
 	status: string;
+	companyID: string;
 }
 
 export interface BusinessDB {
@@ -86,7 +87,7 @@ db.version(1).stores({
 });
 
 gamePlayDB.version(3).stores({
-	realEstate: 'id, status, streetId, buildingTypeId, rent, streetNumber',
+	realEstate: 'id, status, streetId, buildingTypeId, rent, streetNumber, companyID',
 	business: '++uuid, name, color, type',
 	bankTransactions: '++id, day, title, amount',
 	subscriptions: '++id, title, amount',

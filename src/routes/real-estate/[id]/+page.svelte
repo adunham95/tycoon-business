@@ -17,14 +17,22 @@
 		<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
 		<div class="absolute bottom-0 left-0 right-0 p-4 text-white">
 			<h1 class="text-2xl font-bold">
-				{data.streetNumber}
-				{data.street.streetName || 'First Street'}
+				{data.buildingData.streetNumber}
+				{data.buildingData.street.streetName || 'First Street'}
 			</h1>
 			<div class="flex items-center gap-2 text-sm">
-				<span>{data.street.traffic} Traffic Score</span>
-				<span>{data.buildingType.type}</span>
-				<span>{numberWithCommas(data.buildingType.size)} sq ft</span>
+				<span>{data.buildingData.street.traffic} Traffic Score</span>
+				<span>{data.buildingData.buildingType.type}</span>
+				<span>{numberWithCommas(data.buildingData.buildingType.size)} sq ft</span>
 			</div>
 		</div>
+	</div>
+	<div class="p-4">
+		<label>Assigned Business</label>
+		<select name="type" class="select w-full max-w-xs">
+			{#each data.business as business}
+				<option value={business.id}>{business.name}</option>
+			{/each}
+		</select>
 	</div>
 </div>
