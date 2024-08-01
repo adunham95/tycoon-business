@@ -4,6 +4,7 @@
 	import PageHeader from '$components/PageHeader.svelte';
 	import type { BusinessDB } from '$lib/db';
 	import { createBusiness } from '$lib/database/businesses';
+	import { businessCategories } from '$data/bussiness';
 
 	async function saveBusiness(e: any) {
 		if (!e) return;
@@ -31,11 +32,9 @@
 	<div class="h-2"></div>
 	<select name="type" class="select w-full max-w-xs">
 		<option disabled selected>Category</option>
-		<option>Bar</option>
-		<option>Electronics</option>
-		<option>Coffee Shop</option>
-		<option>Food</option>
-		<option>Clothing</option>
+		{#each businessCategories as business}
+			<option>{business.name}</option>
+		{/each}
 	</select>
 	<div class="h-2"></div>
 	<div class="flex justify-end">
