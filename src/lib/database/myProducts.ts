@@ -1,3 +1,4 @@
+import { defaultWarehouse } from '$data/buildings';
 import { getProduct } from '$data/products';
 import { gamePlayDB } from '$lib/db';
 import { getBuilding } from './realEstate';
@@ -35,8 +36,7 @@ export async function getMyProductsInWarehouse() {
 	return (await gamePlayDB.myProducts.where({ buildingID: 'warehouse' }).toArray()).map((item) => {
 		return {
 			...item,
-			building:
-				item.buildingID === 'warehouse' ? { name: 'Warehouse' } : getBuilding(item.buildingID),
+			building: item.buildingID === 'warehouse' ? defaultWarehouse : getBuilding(item.buildingID),
 			product: getProduct(item.productID)
 		};
 	});

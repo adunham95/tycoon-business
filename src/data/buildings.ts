@@ -67,6 +67,11 @@ const userWarehouses = [
 	}
 ];
 
+export const defaultWarehouse = {
+	id: 'warehouse',
+	name: 'Warehouse'
+};
+
 export function getBuildingType(buildingTypeId: string) {
 	if (buildingTypeId === 'w1') return userWarehouses[0];
 	return buildingTypes.find((b) => b.id === buildingTypeId);

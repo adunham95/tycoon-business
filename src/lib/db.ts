@@ -44,6 +44,12 @@ export interface MyProductsDB {
 	count: number;
 }
 
+export interface MyAppliancesDB {
+	id: string;
+	buildingID: string;
+	applianceID: string;
+}
+
 const db = new Dexie('FriendsDatabase') as Dexie & {
 	friends: EntityTable<
 		Friend,
@@ -61,6 +67,7 @@ const gamePlayDB = new Dexie('GamePlayDatabase') as Dexie & {
 	bankTransactions: EntityTable<BankTransitionsDB, 'id'>;
 	subscriptions: EntityTable<SubscriptionsDB, 'id'>;
 	myProducts: EntityTable<MyProductsDB, 'id'>;
+	myAppliances: EntityTable<MyAppliancesDB, 'id'>;
 };
 
 // Schema declaration:
@@ -73,7 +80,8 @@ gamePlayDB.version(3).stores({
 	business: '++uuid, name, color, type',
 	bankTransactions: '++id, day, title, amount',
 	subscriptions: '++id, title, amount',
-	myProducts: 'id, buildingID, productID, [buildingID+productID]'
+	myProducts: 'id, buildingID, productID, [buildingID+productID]',
+	myAppliances: '++id, buildingID, applianceID'
 });
 
 export type { Friend };

@@ -98,5 +98,16 @@ export const products = [
 ];
 
 export function getProduct(id: string) {
-	return products.find((product) => product.id === id);
+	const product = products.find((product) => product.id === id);
+	if (!product) {
+		return {
+			name: 'Product Not Found',
+			description: 'Product Not Found',
+			price: 0
+		};
+	}
+	return {
+		description: product?.category,
+		...product
+	};
 }

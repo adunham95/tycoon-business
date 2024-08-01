@@ -9,6 +9,8 @@ export function purchase(amount: number, title: string, recipt?: string[]) {
 	if (money && money >= amount) {
 		createTransaction(currentDay, title, amount, recipt);
 		updateMoney(money - amount);
+	} else {
+		throw new Error('Not enough money');
 	}
 	return true;
 }
