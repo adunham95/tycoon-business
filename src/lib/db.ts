@@ -43,7 +43,7 @@ export interface LoanDB {
 	length: number;
 	payment: number;
 	endDay: number;
-	paid: boolean;
+	paid: number;
 }
 
 export interface MyProductsDB {
@@ -77,7 +77,7 @@ const gamePlayDB = new Dexie('GamePlayDatabase') as Dexie & {
 	subscriptions: EntityTable<SubscriptionsDB, 'id'>;
 	myProducts: EntityTable<MyProductsDB, 'id'>;
 	myAppliances: EntityTable<MyAppliancesDB, 'id'>;
-	myLoans: EntityTable<LoanDB, 'id'>;
+	loans: EntityTable<LoanDB, 'id'>;
 };
 
 // Schema declaration:
@@ -92,7 +92,7 @@ gamePlayDB.version(3).stores({
 	subscriptions: '++id, title, amount',
 	myProducts: 'id, buildingID, productID, [buildingID+productID]',
 	myAppliances: '++id, buildingID, applianceID',
-	myLoans: '++id,  payment, endDay'
+	loans: '++id, amount, length, payment, endDay, paid'
 });
 
 export type { Friend };

@@ -30,12 +30,12 @@ export async function createLoanItem(
 	length: number,
 	endDay: number
 ) {
-	await gamePlayDB.myLoans.add({
+	await gamePlayDB.loans.add({
 		amount,
 		length,
 		payment,
 		endDay,
-		paid: false
+		paid: 0
 	});
 }
 

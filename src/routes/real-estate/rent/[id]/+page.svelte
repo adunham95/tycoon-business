@@ -1,9 +1,16 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import { convertToDollars } from '$lib/utils/convertToDollars';
 	import { numberWithCommas } from '$lib/utils/numbersWithCommas';
 	import { rentBuilding } from '$lib/utils/purchase';
 	export let data: any;
 	console.log(data);
+
+	async function rent(id: string) {
+		const res = await rentBuilding(id);
+		if (!res) alert('Not Able to rent');
+		if (res) goto('/');
+	}
 </script>
 
 <div class="flex-1 overflow-auto">
@@ -47,6 +54,6 @@
 				</div>
 			</div>
 		</div>
-		<button class="btn btn-primary w-full" on:click={() => rentBuilding(data.id)}>Rent</button>
+		<button class="btn btn-primary w-full" on:click={() => rent(data.id)}>Rent</button>
 	</div>
 </div>

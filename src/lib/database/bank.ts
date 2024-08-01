@@ -12,9 +12,9 @@ export function getMoney() {
 
 export function purchase(amount: number) {
 	const money = getMoney();
-	if (money && money >= amount) {
-		updateMoney(money - amount);
-		return true;
-	}
+	updateMoney(money - amount);
+	// if (money && money >= amount) {
+	// 	return true;
+	// }
 	return false;
 }

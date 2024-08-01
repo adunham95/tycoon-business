@@ -29,6 +29,9 @@ export async function rentBuilding(buildingID: string) {
 		await createTransaction(currentDay, `Deposit ${title}`, amount);
 		await createSubscription(`Rent ${title}`, amount);
 		await updateMoney(money - amount);
+	} else {
+		console.log('cant rent');
+		return false;
 	}
 
 	gamePlayDB.realEstate.update(buildingID, { status: 'Rented' });
