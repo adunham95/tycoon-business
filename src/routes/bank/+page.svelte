@@ -2,9 +2,8 @@
 	import { invalidateAll } from '$app/navigation';
 	import ButtonModal from '$components/ButtonModal.svelte';
 	import PageHeader from '$components/PageHeader.svelte';
+	import PlaceholderIcon from '$components/placeholderIcon.svelte';
 	import { updateMoney } from '$lib/database/bank';
-	import { getCurrentDay } from '$lib/database/currentDay';
-	import { createTransaction } from '$lib/database/transactions';
 	import { convertToDollars } from '$lib/utils/convertToDollars';
 	import { createLoan } from '$lib/utils/purchase';
 
@@ -71,6 +70,13 @@
 			<input bind:value={balance} type="range" min="100" max="100000000" class="range" />
 			<p class="text-lg font-bold">{convertToDollars(balance)}</p>
 		</ButtonModal>
+		<a
+			href="/bank/loans"
+			class="flex aspect-square flex-col items-center justify-center rounded-md bg-green-400 p-3 text-sm text-white shadow-xl"
+		>
+			<PlaceholderIcon />
+			My Loans
+		</a>
 	</div>
 
 	<div class="card mt-2 bg-white">

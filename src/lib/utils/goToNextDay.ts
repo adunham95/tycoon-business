@@ -44,7 +44,7 @@ export async function goToNextDay() {
 	const loans = await gamePlayDB.loans.where({ paid: 0 }).toArray();
 	for (let index = 0; index < loans.length; index++) {
 		const loan = loans[index];
-		await createTransaction(nextDay, `Loan ${loan.id}`, loan.payment);
+		await createTransaction(nextDay, `Loan Payment ${loan.id}`, loan.payment);
 		await purchase(loan.payment);
 	}
 
