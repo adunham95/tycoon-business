@@ -1,8 +1,9 @@
+import { businessCategories } from '$data/bussiness';
 import { getMoney, updateMoney } from '$lib/database/bank';
 import { getCurrentDay } from '$lib/database/currentDay';
 import { getBuilding } from '$lib/database/realEstate';
 import { createLoanItem, createSubscription, createTransaction } from '$lib/database/transactions';
-import { gamePlayDB } from '$lib/db';
+import { gamePlayDB, type BusinessDB } from '$lib/db';
 export function purchase(amount: number, title: string, recipt?: string[]) {
 	const money = getMoney();
 	const currentDay = getCurrentDay();
@@ -48,4 +49,21 @@ export async function createLoan(loanAmount: number, loanLength: number, loanPay
 	await createLoanItem(loanAmount, loanPayment, loanLength, endDay);
 
 	console.log({ money, currentDay, loanAmount, loanLength });
+}
+
+export async function startBusiness({ name, color, type }: BusinessDB) {
+	const money = getMoney();
+	const currentDay = getCurrentDay();
+	const businessType = businessCategories.find((business) => business.id === type);
+	const businessCost = businessType?.cost || 0;
+
+	await createTransaction(currentDay, `Business License: ${name}`, businessCost);
+	await updateMoney(money + businessCost);
+
+	const id = await gamePlayDB.business.add({
+		color,
+		name,
+		type
+	});
+	return id;
 }

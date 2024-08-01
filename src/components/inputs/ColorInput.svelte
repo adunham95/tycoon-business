@@ -23,6 +23,7 @@
 	];
 	export let name: string | undefined = 'color';
 	export let label: string | undefined = 'Color';
+	export let value: string | undefined = colors[0];
 </script>
 
 {#if label}
@@ -35,14 +36,15 @@
 	{#each colors as color, i}
 		<label
 			for={color}
-			class="btn btn-ghost btn-circle mb-2 mr-1 border-4 border-transparent has-[:checked]:border-white"
+			class="btn btn-circle btn-ghost mb-2 mr-1 border-4 border-transparent has-[:checked]:border-white"
 			style="background-color: {color};"
 		>
 			<input
 				id={color}
 				value={color}
 				{name}
-				checked={i === 0}
+				checked={value === color}
+				on:change={() => (value = color)}
 				type="radio"
 				class="hidden rounded"
 			/>
