@@ -1,4 +1,6 @@
+import { getCompanyType } from '$data/bussiness';
 import { gamePlayDB, type BusinessDB } from '$lib/db';
+import { getCompanyBuildings } from './realEstate';
 
 export async function createBusiness(business: BusinessDB) {
 	console.log('createBusiness', business);
@@ -15,5 +17,12 @@ export async function getBusiness() {
 }
 
 export async function getSingleBusiness(id: number) {
-	return await gamePlayDB.business.get(id);
+	if (!id || id === 0) return;
+	const business = await gamePlayDB.business.get(id);
+	if (!business) return;
+	return {
+		...business,
+		companyType: getCompanyType(business.type),
+		buildings: await getCompanyBuildings(id)
+	};
 }

@@ -1,5 +1,6 @@
 import { generateBuildings, getBuildingType, getStreet } from '$data/buildings';
 import { gamePlayDB } from '$lib/db';
+import { getSingleBusiness } from './businesses';
 
 export async function getRentableBuildings() {
 	const rentalBuildingData = await gamePlayDB.realEstate
@@ -42,7 +43,8 @@ export function saveRentableBuildings(buildingsToAdd: number) {
 			buildingTypeId: building.buildingTypeId,
 			streetId: building.streetId,
 			streetNumber: building.streetNumber,
-			status: 'for-rent'
+			status: 'for-rent',
+			companyID: 0
 		};
 	});
 	gamePlayDB.realEstate.bulkAdd(buildingDetails);
@@ -60,6 +62,23 @@ export async function getBuilding(id: string) {
 	return {
 		...buildingData,
 		buildingType: getBuildingType(buildingData.buildingTypeId),
-		street: getStreet(buildingData.streetId)
+		street: getStreet(buildingData.streetId),
+		company: await getSingleBusiness(buildingData.companyID)
 	};
+}
+
+export async function getCompanyBuildings(companyID: number) {
+	const buildingData = await gamePlayDB.realEstate.where('companyID').equals(companyID).toArray();
+
+	if (!buildingData) return;
+
+	const buildings = buildingData.map((building) => {
+		return {
+			...building,
+			buildingType: getBuildingType(building.buildingTypeId),
+			street: getStreet(building.streetId)
+		};
+	});
+
+	return buildings;
 }

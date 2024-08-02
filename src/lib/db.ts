@@ -14,7 +14,7 @@ export interface RealEstateDB {
 	streetId: number;
 	streetNumber: number;
 	status: string;
-	companyID: string;
+	companyID: number;
 }
 
 export interface BusinessDB {

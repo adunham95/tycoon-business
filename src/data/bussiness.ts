@@ -20,3 +20,9 @@ export const businessCategories = [
 		cost: 5000
 	}
 ];
+
+export function getCompanyType(id: string) {
+	const type = businessCategories.find((category) => category.id === id);
+	if (!type) return id;
+	return type;
+}
